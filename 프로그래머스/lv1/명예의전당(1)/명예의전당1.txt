@@ -1,0 +1,20 @@
+def solution(k, score):
+    
+    # 1. 명예의 전당 리스트에 score의 원소를 추가한다.
+    # 2. k번째 이후의 score 원소와 명예의 전당 리스트의 최솟값과 비교한다.
+    # 3. score 원소가 더 높으면 명예의 전당 리스트에 추가하고 최솟값을 제거한다.
+    # 4. 명예의 전당의 최솟값을 answer 리스트에 추가한다.
+    lst = []
+    answer = []
+    
+    for i in score:
+        if len(lst) < k:
+            lst.append(i)
+        else:
+            if min(lst) < i:
+                lst.remove(min(lst))
+                lst.append(i)
+
+        answer.append(min(lst))
+    
+    return answer
